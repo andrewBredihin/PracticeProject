@@ -14,7 +14,7 @@ public class Employee extends Initiator {
     @Column(name = "JOB_TITLE")
     private String jobTitle;
 
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "USER_ID", unique = true)
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
