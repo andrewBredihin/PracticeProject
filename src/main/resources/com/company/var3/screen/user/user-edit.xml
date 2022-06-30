@@ -5,9 +5,6 @@
     <data>
         <instance id="userDc"
                   class="com.company.var3.entity.User">
-            <fetchPlan extends="_base">
-                <property name="department" fetchPlan="_base"/>
-            </fetchPlan>
             <loader/>
         </instance>
     </data>
@@ -43,8 +40,6 @@
                 <textField id="emailField" property="email"/>
                 <comboBox id="timeZoneField" property="timeZoneId"/>
                 <checkBox id="activeField" property="active"/>
-                <entityPicker id="departamentField" property="department"/>
-                <comboBox id="jobTitleField" property="jobTitle"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

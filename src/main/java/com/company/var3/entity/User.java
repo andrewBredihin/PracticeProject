@@ -21,12 +21,9 @@ import java.util.UUID;
 @Entity
 public class User implements JmixUserDetails, HasTimeZone {
 
-    @Column(name = "JOB_TITLE")
-    private String jobTitle;
-
-    @JoinColumn(name = "DEPARTMENT_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Department department;
+    @Version
+    @Column(name = "VERSION")
+    private Integer version;
 
     @Column(name = "USERNAME", nullable = false)
     protected String username;
@@ -57,8 +54,27 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Id
     private UUID id;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    private Employee employee;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 
     public UUID getId() {
         return id;
@@ -66,22 +82,6 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public JobTitles getJobTitle() {
-        return jobTitle == null ? null : JobTitles.fromId(jobTitle);
-    }
-
-    public void setJobTitle(JobTitles jobTitle) {
-        this.jobTitle = jobTitle == null ? null : jobTitle.getId();
     }
 
     public String getPassword() {

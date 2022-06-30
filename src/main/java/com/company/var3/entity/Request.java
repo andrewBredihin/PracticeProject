@@ -5,6 +5,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -20,9 +21,10 @@ public class Request {
     @Id
     private UUID id;
 
-    @JoinColumn(name = "EXECUTOR_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User executor;
+    @NotNull
+    @JoinColumn(name = "EXECUTOR_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Employee executor;
 
     @Column(name = "STATUS")
     private String status;
@@ -40,6 +42,14 @@ public class Request {
     @JoinColumn(name = "INITIATOR_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Initiator initiator;
+
+    public void setExecutor(Employee executor) {
+        this.executor = executor;
+    }
+
+    public Employee getExecutor() {
+        return executor;
+    }
 
     public Initiator getInitiator() {
         return initiator;
@@ -79,14 +89,6 @@ public class Request {
 
     public void setStatus(StatusEnum status) {
         this.status = status == null ? null : status.getId();
-    }
-
-    public User getExecutor() {
-        return executor;
-    }
-
-    public void setExecutor(User executor) {
-        this.executor = executor;
     }
 
     public UUID getId() {

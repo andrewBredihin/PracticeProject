@@ -5,9 +5,6 @@
     <data readOnly="true">
         <collection id="usersDc"
                     class="com.company.var3.entity.User">
-            <fetchPlan extends="_base">
-                <property name="department" fetchPlan="_base"/>
-            </fetchPlan>
             <loader id="usersDl">
                 <query>
                     <![CDATA[select e from User e order by e.username]]>
@@ -57,8 +54,6 @@
                 <column id="email"/>
                 <column id="timeZoneId"/>
                 <column id="active"/>
-                <column id="department"/>
-                <column id="jobTitle"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

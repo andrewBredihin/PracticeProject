@@ -11,7 +11,11 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "INITIATOR")
+@Table(name = "INITIATOR", indexes = {
+        @Index(name = "IDX_EMPLOYEE_DEPARTMENT_ID", columnList = "DEPARTMENT_ID"),
+        @Index(name = "IDX_EMPLOYEE_USER_ID", columnList = "USER_ID"),
+        @Index(name = "IDX_EMPLOYEE_USER_ID", columnList = "USER_ID")
+})
 @Entity
 public class Initiator {
     @JmixGeneratedValue
