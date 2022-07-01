@@ -49,9 +49,9 @@
             </actions>
             <columns>
                 <column id="name"/>
+                <column id="user"/>
                 <column id="department"/>
                 <column id="jobTitle"/>
-                <column id="user"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

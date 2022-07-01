@@ -31,6 +31,12 @@
         <form id="form" dataContainer="employeeDc">
             <column width="350px">
                 <textField id="nameField" property="name"/>
+                <entityPicker id="userField" property="user">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
                 <entityPicker id="departmentField" property="department">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>
@@ -38,12 +44,6 @@
                     </actions>
                 </entityPicker>
                 <comboBox id="jobTitleField" property="jobTitle"/>
-                <entityPicker id="userField" property="user">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

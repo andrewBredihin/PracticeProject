@@ -5,7 +5,6 @@ import io.jmix.core.DataManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -23,7 +22,7 @@ public class EmployeeService {
                 .list()
                 .stream().map(e -> e.<User>getValue("user"))
                 .findFirst()
-                .orElseThrow(IllegalStateException::new);
+                .orElse(null);
         if (user != null)
             return true;
         return false;

@@ -50,11 +50,11 @@
             </actions>
             <columns>
                 <column id="executor"/>
+                <column id="initiator"/>
                 <column id="status"/>
                 <column id="description"/>
                 <column id="startDate"/>
                 <column id="endDate"/>
-                <column id="initiator"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

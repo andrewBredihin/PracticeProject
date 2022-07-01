@@ -25,7 +25,7 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "VERSION")
     private Integer version;
 
-    @Column(name = "USERNAME", nullable = false)
+    @Column(name = "USERNAME", nullable = false, unique = true)
     protected String username;
 
     @Secret
