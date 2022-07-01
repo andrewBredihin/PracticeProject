@@ -25,7 +25,7 @@ public class RequestEdit extends StandardEditor<Request> {
         User user = (User) currentAuthentication.getUser();
 
         if (requestService.checkRequestInDB(request.getId())){
-            //Необходимо заменить циклом либо правами пользователя
+            //Необходимо заменить циклом либо изменить доступ пользователей
             getWindow().getComponent("executorField").setEnabled(false);
             getWindow().getComponent("initiatorField").setEnabled(false);
             getWindow().getComponent("descriptionField").setEnabled(false);
