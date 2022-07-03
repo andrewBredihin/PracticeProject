@@ -11,8 +11,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "REQUEST", indexes = {
-        @Index(name = "IDX_REQUEST_EXECUTOR_ID", columnList = "EXECUTOR_ID"),
-        @Index(name = "IDX_REQUEST_INITIATOR_ID", columnList = "INITIATOR_ID")
+        @Index(name = "IDX_REQUEST_INITIATOR_ID", columnList = "INITIATOR_ID"),
+        @Index(name = "IDX_REQUEST_EXECUTOR_ID", columnList = "EXECUTOR_ID")
 })
 @Entity
 public class Request {
@@ -20,11 +20,6 @@ public class Request {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
-
-    @NotNull
-    @JoinColumn(name = "EXECUTOR_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Employee executor;
 
     @Column(name = "STATUS")
     private String status;
@@ -39,16 +34,21 @@ public class Request {
     @Column(name = "END_DATE")
     private LocalDate endDate;
 
+    @JoinColumn(name = "EXECUTOR_ID", nullable = false)
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Employee executor;
+
     @JoinColumn(name = "INITIATOR_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Initiator initiator;
 
-    public void setExecutor(Employee executor) {
-        this.executor = executor;
-    }
-
     public Employee getExecutor() {
         return executor;
+    }
+
+    public void setExecutor(Employee executor) {
+        this.executor = executor;
     }
 
     public Initiator getInitiator() {

@@ -4,6 +4,7 @@ import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.SystemLevel;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
@@ -16,7 +17,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.UUID;
 
-@Table(name = "USER_")
+@Table(name = "USER_", indexes = {
+        @Index(name = "IDX_USER_EMPLOYEE_ID", columnList = "EMPLOYEE_ID", unique = true)
+})
 @JmixEntity
 @Entity
 public class User implements JmixUserDetails, HasTimeZone {
@@ -24,6 +27,11 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Version
     @Column(name = "VERSION")
     private Integer version;
+
+    @JoinColumn(name = "EMPLOYEE_ID", unique = true)
+    @Composition
+    @OneToOne(fetch = FetchType.LAZY)
+    private Employee employee;
 
     @Column(name = "USERNAME", nullable = false, unique = true)
     protected String username;
@@ -53,9 +61,6 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    private Employee employee;
 
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;

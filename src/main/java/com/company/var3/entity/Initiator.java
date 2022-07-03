@@ -11,26 +11,24 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "INITIATOR", indexes = {
-        @Index(name = "IDX_EMPLOYEE_DEPARTMENT_ID", columnList = "DEPARTMENT_ID"),
-        @Index(name = "IDX_EMPLOYEE_USER_ID", columnList = "USER_ID"),
-        @Index(name = "IDX_EMPLOYEE_USER_ID", columnList = "USER_ID")
-})
+@Table(name = "INITIATOR")
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING)
 public class Initiator {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
 
+    @Composition
+    @OneToMany(mappedBy = "initiator")
+    private List<Request> requests;
+
     @InstanceName
     @Column(name = "NAME", nullable = false)
     @NotNull
     private String name;
-
-    @Composition
-    @OneToMany(mappedBy = "initiator")
-    private List<Request> requests;
 
     public List<Request> getRequests() {
         return requests;
