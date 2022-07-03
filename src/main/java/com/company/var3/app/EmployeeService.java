@@ -1,5 +1,6 @@
 package com.company.var3.app;
 
+import com.company.var3.entity.Employee;
 import com.company.var3.entity.User;
 import io.jmix.core.DataManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,17 @@ public class EmployeeService {
         if (user != null)
             return true;
         return false;
+    }
+
+    public User getUserByEmployeeId(UUID employeeId){
+        return dataManager.loadValues("select u " +
+                        "from Employee e inner join User u " +
+                        "on e.user = u " +
+                        "where e.id = '" + employeeId.toString() + "\'")
+                .properties("user")
+                .list()
+                .stream().map(e -> e.<User>getValue("user"))
+                .findFirst()
+                .orElse(null);
     }
 }

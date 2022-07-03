@@ -5,8 +5,6 @@ import com.company.var3.entity.User;
 import io.jmix.core.EntityStates;
 import io.jmix.ui.Dialogs;
 import io.jmix.ui.action.DialogAction;
-import io.jmix.ui.component.HasValue;
-import io.jmix.ui.component.ValuePicker;
 import io.jmix.ui.screen.*;
 import com.company.var3.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,7 @@ public class EmployeeEdit extends StandardEditor<Employee> {
 
     @Subscribe
     public void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
+        //Проверка на нового Employee либо изменение старого
         if (entityStates.isNew(getEditedEntity()) || firstUser != getEditedEntity().getUser()){
             if (employeeService.checkForUser(getEditedEntity().getUser().getId())) {
                 dialogs.createOptionDialog()
@@ -49,6 +48,7 @@ public class EmployeeEdit extends StandardEditor<Employee> {
 
     @Subscribe
     public void onAfterShow(AfterShowEvent event) {
+        //Получить изначально выбранного User у Employee
         firstUser = getEditedEntity().getUser();
     }
 }
