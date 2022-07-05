@@ -14,8 +14,9 @@ import javax.validation.constraints.NotNull;
 @PrimaryKeyJoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID")
 public class Employee extends Initiator {
 
-    @Column(name = "JOB_TITLE")
-    private String jobTitle;
+    @JoinColumn(name = "JOB_TITLE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private JobTitle jobTitle;
 
     @JoinColumn(name = "DEPARTMENT_ID")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,6 +27,14 @@ public class Employee extends Initiator {
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     private User user;
+
+    public void setJobTitle(JobTitle jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public JobTitle getJobTitle() {
+        return jobTitle;
+    }
 
     public User getUser() {
         return user;
@@ -41,14 +50,6 @@ public class Employee extends Initiator {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    public JobTitles getJobTitle() {
-        return jobTitle == null ? null : JobTitles.fromId(jobTitle);
-    }
-
-    public void setJobTitle(JobTitles jobTitle) {
-        this.jobTitle = jobTitle == null ? null : jobTitle.getId();
     }
 
 }

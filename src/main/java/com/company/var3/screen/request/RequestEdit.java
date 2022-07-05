@@ -38,21 +38,26 @@ public class RequestEdit extends StandardEditor<Request> {
             getWindow().getComponent("startDateField").setEnabled(false);
             getWindow().getComponent("endDateField").setEnabled(false);
 
-            if (request.getInitiator().getClass().equals(Client.class)){
-                if (!request.getExecutor().getUser().equals(user))
-                    //Заблокировать поле изменения статуса заявки, если:
-                    //инициатор - внешний клиент
-                    //авторизированный пользователь - не является исполнителем данной заявки
-                    getWindow().getComponent("statusField").setEnabled(false);
+            //Если заявка не закрыта
+            if (request.getStatus() != StatusEnum.CLOSED){
+                if (request.getInitiator().getClass().equals(Client.class)){
+                    if (!request.getExecutor().getUser().equals(user))
+                        //Заблокировать поле изменения статуса заявки, если:
+                        //инициатор - внешний клиент
+                        //авторизированный пользователь - не является исполнителем данной заявки
+                        getWindow().getComponent("statusField").setEnabled(false);
+                }
+                else {
+                    User initiator = employeeService.getUserByEmployeeId(request.getInitiator().getId());
+                    if (!initiator.equals(user))
+                        //Заблокировать поле изменения статуса заявки, если:
+                        //инициатор - пользователь системы User
+                        //авторизрованный пользователь - не является инициатором данной заявки
+                        getWindow().getComponent("statusField").setEnabled(false);
+                }
             }
-            else {
-                User initiator = employeeService.getUserByEmployeeId(request.getInitiator().getId());
-                if (!initiator.equals(user))
-                    //Заблокировать поле изменения статуса заявки, если:
-                    //инициатор - пользователь системы User
-                    //авторизрованный пользователь - не является инициатором данной заявки
-                    getWindow().getComponent("statusField").setEnabled(false);
-            }
+            else
+                getWindow().getComponent("statusField").setEnabled(false);
         }
     }
 }

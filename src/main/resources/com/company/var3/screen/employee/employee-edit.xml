@@ -8,6 +8,7 @@
             <fetchPlan extends="_base">
                 <property name="department" fetchPlan="_base"/>
                 <property name="user" fetchPlan="_base"/>
+                <property name="jobTitle" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
         </instance>
@@ -43,7 +44,7 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <comboBox id="jobTitleField" property="jobTitle"/>
+                <entityPicker id="jobTitleField" property="jobTitle"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

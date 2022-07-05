@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
-        caption="msg://employeeBrowse.caption"
-        focusComponent="employeesTable">
+        caption="msg://jobTitleBrowse.caption"
+        focusComponent="jobTitlesTable">
     <data readOnly="true">
-        <collection id="employeesDc"
-                    class="com.company.var3.entity.Employee">
-            <fetchPlan extends="_base">
-                <property name="department" fetchPlan="_base"/>
-                <property name="user" fetchPlan="_base"/>
-                <property name="jobTitle" fetchPlan="_base"/>
-            </fetchPlan>
-            <loader id="employeesDl">
+        <collection id="jobTitlesDc"
+                    class="com.company.var3.entity.JobTitle">
+            <fetchPlan extends="_base"/>
+            <loader id="jobTitlesDl">
                 <query>
-                    <![CDATA[select e from Employee e]]>
+                    <![CDATA[select e from JobTitle e]]>
                 </query>
             </loader>
         </collection>
@@ -34,33 +30,28 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="employeesTable" spacing="true">
+    <layout expand="jobTitlesTable" spacing="true">
         <filter id="filter"
-                dataLoader="employeesDl">
+                dataLoader="jobTitlesDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="employeesTable"
+        <groupTable id="jobTitlesTable"
                     width="100%"
-                    dataContainer="employeesDc">
+                    dataContainer="jobTitlesDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
-                <action id="refresh" type="refresh"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
                 <column id="name"/>
-                <column id="user"/>
-                <column id="department"/>
-                <column id="jobTitle"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="employeesTable.create"/>
-                <button id="editBtn" action="employeesTable.edit"/>
-                <button id="refreshBtn" action="employeesTable.refresh"/>
-                <button id="removeBtn" action="employeesTable.remove"/>
+                <button id="createBtn" action="jobTitlesTable.create"/>
+                <button id="editBtn" action="jobTitlesTable.edit"/>
+                <button id="removeBtn" action="jobTitlesTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

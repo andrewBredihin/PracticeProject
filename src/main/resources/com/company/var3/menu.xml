@@ -9,6 +9,7 @@
         <item screen="Department.browse" caption="msg://com.company.var3.screen.department/departmentBrowse.menu"/>
         <item screen="Employee.browse" caption="msg://com.company.var3.screen.employee/employeeBrowse.menu"/>
         <item screen="Request.browse" caption="msg://com.company.var3.screen.request/requestBrowse.menu"/>
+        <item screen="JobTitle.browse" caption="msg://com.company.var3.screen.jobtitle/jobTitleBrowse.menu"/>
     </menu>
 
 </menu-config>

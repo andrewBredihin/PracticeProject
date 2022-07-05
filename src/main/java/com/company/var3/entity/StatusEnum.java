@@ -7,8 +7,11 @@ import javax.annotation.Nullable;
 
 public enum StatusEnum implements EnumClass<String> {
 
-    NEW_VALUE("Open"),
-    NEW_VALUE1("Closed");
+    OPEN("Открыта"),
+    CLOSED("Закрыта"),
+    PENDING("На рассмотрении"),
+    AGREEMENT("На согласованнии"),
+    APPROVAL("На утверждении");
 
     private String id;
 

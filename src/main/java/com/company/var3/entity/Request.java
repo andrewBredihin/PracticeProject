@@ -21,7 +21,8 @@ public class Request {
     @Id
     private UUID id;
 
-    @Column(name = "STATUS")
+    @NotNull
+    @Column(name = "STATUS", nullable = false)
     private String status;
 
     @InstanceName
