@@ -15,6 +15,11 @@
             <loader id="requestsDl">
                 <query>
                     <![CDATA[select e from Request e]]>
+                    <condition>
+                        <c:jpql>
+                            <c:where>e.initiator.name like :name</c:where>
+                        </c:jpql>
+                    </condition>
                 </query>
             </loader>
         </collection>
@@ -38,8 +43,17 @@
     <layout expand="requestsTable" spacing="true">
         <filter id="filter"
                 dataLoader="requestsDl">
-            <properties include=".*"/>
+            <properties include=".*" />
+            <configurations>
+                <configuration id="configuration_initiatorName" name="initiator.name">
+                    <propertyFilter property="initiator.name" operation="EQUAL"/>
+                </configuration>
+            </configurations>
         </filter>
+        <hbox spacing="true" align="MIDDLE_LEFT">
+            <label value="msg://com.company.var3.entity/Initiator" align="MIDDLE_LEFT"/>
+            <textField id="initiatorNameField"/>
+        </hbox>
         <groupTable id="requestsTable"
                     width="100%"
                     dataContainer="requestsDc">
