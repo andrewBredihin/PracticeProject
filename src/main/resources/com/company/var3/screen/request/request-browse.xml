@@ -63,12 +63,12 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="executor"/>
                 <column id="initiator"/>
+                <column id="executor"/>
                 <column id="status"/>
-                <column id="description"/>
                 <column id="startDate"/>
                 <column id="endDate"/>
+                <column id="description"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

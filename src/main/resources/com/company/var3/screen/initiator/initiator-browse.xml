@@ -5,19 +5,28 @@
         focusComponent="initiatorsTable">
     <data readOnly="true">
         <collection id="initiatorsDc"
-                    class="com.company.var3.entity.Initiator">
-            <fetchPlan extends="_base">
-                <property name="requests" fetchPlan="_base"/>
-            </fetchPlan>
+                    class="com.company.var3.entity.Initiator"
+                    fetchPlan="_base">
             <loader id="initiatorsDl">
                 <query>
                     <![CDATA[select e from Initiator e]]>
                 </query>
             </loader>
         </collection>
+        <collection id="requestsDc"
+                    class="com.company.var3.entity.Request">
+            <fetchPlan extends="_base">
+                <property name="initiator" fetch="JOIN" fetchPlan="_base"/>
+                <property name="executor" fetch="JOIN" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="requestsDl">
+                <query>
+                    <![CDATA[select r from Request r where r.initiator = :initiator]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
-        <dataLoadCoordinator auto="true"/>
         <screenSettings id="settingsFacet" auto="true"/>
     </facets>
     <actions>
@@ -32,30 +41,40 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="initiatorsTable" spacing="true">
-        <filter id="filter"
-                dataLoader="initiatorsDl">
-            <properties include=".*"/>
-        </filter>
-        <groupTable id="initiatorsTable"
-                    width="100%"
-                    dataContainer="initiatorsDc">
-            <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
-            </actions>
-            <columns>
-                <column id="name"/>
-            </columns>
-            <simplePagination/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
-                <button id="createBtn" action="initiatorsTable.create"/>
-                <button id="editBtn" action="initiatorsTable.edit"/>
-                <button id="removeBtn" action="initiatorsTable.remove"/>
-            </buttonsPanel>
-        </groupTable>
+    <layout>
+        <hbox id="mainBox" width="100%" height="100%" spacing="true">
+            <table id="initiatorsTable"
+                   width="100%"
+                   height="100%"
+                   dataContainer="initiatorsDc">
+                <actions>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <simplePagination/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="editBtn" action="initiatorsTable.edit"/>
+                    <button id="removeBtn" action="initiatorsTable.remove"/>
+                </buttonsPanel>
+            </table>
+            <table id="requestsTable"
+                   width="100%"
+                   height="100%"
+                   dataContainer="requestsDc">
+                <columns>
+                    <column id="initiator"/>
+                    <column id="executor"/>
+                    <column id="status"/>
+                    <column id="startDate"/>
+                    <column id="endDate"/>
+                    <column id="description"/>
+                </columns>
+            </table>
+        </hbox>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>
