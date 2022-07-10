@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="var3">
+        <insert tableName="REQUEST" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="543e2593-dbfd-d958-821b-242ffa99f7bc"/>
+            <column name="STATUS" value="Открыта"/>
+            <column name="EXECUTOR_ID" value="6ebb9b60-1469-3533-67a5-0e63902bf67e"/>
+            <column name="INITIATOR_ID" value="f275e602-017c-1e65-7a7b-64fadaf6dc74"/>
+        </insert>
+        <insert tableName="REQUEST" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="6a13882a-5698-20f5-1bb6-4234e8810493"/>
+            <column name="STATUS" value="На рассмотрении"/>
+            <column name="EXECUTOR_ID" value="a35b27f6-a2bb-a480-6bf3-5bf3c0cd52d2"/>
+            <column name="INITIATOR_ID" value="5c9d3169-1353-a6ce-710d-63716041c1e0"/>
+        </insert>
+        <insert tableName="REQUEST" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="03e686da-e0fb-6448-0aee-801eaa13afd0"/>
+            <column name="STATUS" value="Закрыта"/>
+            <column name="EXECUTOR_ID" value="6ebb9b60-1469-3533-67a5-0e63902bf67e"/>
+            <column name="INITIATOR_ID" value="a35b27f6-a2bb-a480-6bf3-5bf3c0cd52d2"/>
+        </insert>
+        <insert tableName="REQUEST" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="ea674a63-ef56-be81-1c85-40cbe3369cb9"/>
+            <column name="STATUS" value="Открыта"/>
+            <column name="EXECUTOR_ID" value="6ebb9b60-1469-3533-67a5-0e63902bf67e"/>
+            <column name="INITIATOR_ID" value="30af1489-643b-db06-1ca0-0c9c8b634cb2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

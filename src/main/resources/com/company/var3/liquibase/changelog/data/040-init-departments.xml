@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="var3">
+        <insert tableName="DEPARTMENT" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="87d2b088-8d11-6724-45bb-8a50ee36bc1f"/>
+            <column name="NAME" value="Отдел 1"/>
+            <column name="DESCRIPTION" value=""/>
+        </insert>
+
+        <insert tableName="DEPARTMENT" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="caadc1b0-c442-ca2d-29cb-674b499adf33"/>
+            <column name="NAME" value="Отдел 2"/>
+            <column name="DESCRIPTION" value=""/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

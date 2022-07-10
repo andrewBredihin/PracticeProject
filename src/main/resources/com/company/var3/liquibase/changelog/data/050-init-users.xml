@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="var3">
+        <insert tableName="USER_" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="16e050be-0606-bc92-a664-9aaf8745dd0b"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="user1"/>
+            <column name="PASSWORD" value="{noop}12345"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+        <insert tableName="USER_" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="6f5ff448-e993-d1d8-76b6-f5279261006d"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="user2"/>
+            <column name="PASSWORD" value="{noop}12345"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+        <insert tableName="USER_" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="2af852c2-2dab-a0a2-0caf-34832d76645a"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="user3"/>
+            <column name="PASSWORD" value="{noop}12345"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

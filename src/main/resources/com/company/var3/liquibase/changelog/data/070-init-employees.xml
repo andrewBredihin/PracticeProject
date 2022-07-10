@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="var3">
+        <insert tableName="EMPLOYEE" dbms="postgresql, mssql, hsqldb">
+            <column name="EMPLOYEE_ID" value="f275e602-017c-1e65-7a7b-64fadaf6dc74"/>
+            <column name="JOB_TITLE_ID" value="e558f720-3aeb-4980-b1c0-1bd035e264f7"/>
+            <column name="DEPARTMENT_ID" value="87d2b088-8d11-6724-45bb-8a50ee36bc1f"/>
+            <column name="USER_ID" value="16e050be-0606-bc92-a664-9aaf8745dd0b"/>
+        </insert>
+        <insert tableName="EMPLOYEE" dbms="postgresql, mssql, hsqldb">
+            <column name="EMPLOYEE_ID" value="6ebb9b60-1469-3533-67a5-0e63902bf67e"/>
+            <column name="JOB_TITLE_ID" value="e27d5e0b-6aa6-f01c-f9aa-03223ee998a7"/>
+            <column name="DEPARTMENT_ID" value="caadc1b0-c442-ca2d-29cb-674b499adf33"/>
+            <column name="USER_ID" value="6f5ff448-e993-d1d8-76b6-f5279261006d"/>
+        </insert>
+        <insert tableName="EMPLOYEE" dbms="postgresql, mssql, hsqldb">
+            <column name="EMPLOYEE_ID" value="a35b27f6-a2bb-a480-6bf3-5bf3c0cd52d2"/>
+            <column name="JOB_TITLE_ID" value="e27d5e0b-6aa6-f01c-f9aa-03223ee998a7"/>
+            <column name="DEPARTMENT_ID" value="caadc1b0-c442-ca2d-29cb-674b499adf33"/>
+            <column name="USER_ID" value="2af852c2-2dab-a0a2-0caf-34832d76645a"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
