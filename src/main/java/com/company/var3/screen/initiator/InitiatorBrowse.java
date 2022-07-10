@@ -25,7 +25,7 @@ public class InitiatorBrowse extends StandardLookup<Initiator> {
 
     @Subscribe(id = "initiatorsDc", target = Target.DATA_CONTAINER)
     public void onInitiatorsDcItemChange(InstanceContainer.ItemChangeEvent<Initiator> event) {
-        requestsDl.setParameter("initiator", event.getItem());
+        requestsDl.setParameter("initiatorName", event.getItem().getName());
         requestsDl.load();
     }
 }

@@ -31,7 +31,6 @@ public class RequestEdit extends StandardEditor<Request> {
 
         //Заблокировать все поля кроме поля со статусом заявки
         if (requestService.checkRequestInDB(request.getId())){
-            //Необходимо заменить циклом либо изменить доступ пользователей
             getWindow().getComponent("executorField").setEnabled(false);
             getWindow().getComponent("initiatorField").setEnabled(false);
             getWindow().getComponent("descriptionField").setEnabled(false);

@@ -21,7 +21,7 @@
             </fetchPlan>
             <loader id="requestsDl">
                 <query>
-                    <![CDATA[select r from Request r where r.initiator = :initiator]]>
+                    <![CDATA[select r from Request r where r.initiator.name = :initiatorName or r.executor.name = :initiatorName]]>
                 </query>
             </loader>
         </collection>

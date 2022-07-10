@@ -16,9 +16,14 @@
                 <query>
                     <![CDATA[select e from Request e]]>
                     <condition>
-                        <c:jpql>
-                            <c:where>e.initiator.name like :name</c:where>
-                        </c:jpql>
+                        <or>
+                            <c:jpql>
+                                <c:where>e.initiator.name like :name</c:where>
+                            </c:jpql>
+                            <c:jpql>
+                                <c:where>e.executor.name like :name</c:where>
+                            </c:jpql>
+                        </or>
                     </condition>
                 </query>
             </loader>
@@ -44,14 +49,9 @@
         <filter id="filter"
                 dataLoader="requestsDl">
             <properties include=".*" />
-            <configurations>
-                <configuration id="configuration_initiatorName" name="initiator.name">
-                    <propertyFilter property="initiator.name" operation="EQUAL"/>
-                </configuration>
-            </configurations>
         </filter>
         <hbox spacing="true" align="MIDDLE_LEFT">
-            <label value="msg://com.company.var3.entity/Initiator" align="MIDDLE_LEFT"/>
+            <label value="msg://nameMessage" align="MIDDLE_LEFT"/>
             <textField id="initiatorNameField"/>
         </hbox>
         <groupTable id="requestsTable"
